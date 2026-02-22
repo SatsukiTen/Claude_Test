@@ -8,7 +8,7 @@ build/
 .env
 
 # Android
-local.properties
+breakout-android/local.properties
 *.iml
 .gradle/
 breakout-android/.gradle/

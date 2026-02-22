@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SETTINGS"
+            android:textSize="26sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp" />
+
+        <!-- ── Ball Speed ─────────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/labelBallSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:paddingBottom="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ボールの初速（画面幅に対する割合）"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:paddingBottom="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekBallSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progressTint="#4C9EE8"
+            android:thumbTint="#FFFFFF"
+            android:layout_marginBottom="28dp" />
+
+        <!-- ── Max Speed Multiplier ───────────────────────────────── -->
+        <TextView
+            android:id="@+id/labelMaxSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:paddingBottom="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="最終ブロック破壊時の最高速度（初速の何倍か）"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:paddingBottom="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekMaxSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progressTint="#4C9EE8"
+            android:thumbTint="#FFFFFF"
+            android:layout_marginBottom="28dp" />
+
+        <!-- ── Paddle Width Stage 1 ───────────────────────────────── -->
+        <TextView
+            android:id="@+id/labelPaddleBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:paddingBottom="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ステージ1のパドル幅（画面幅の何%か）"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:paddingBottom="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekPaddleBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progressTint="#4C9EE8"
+            android:thumbTint="#FFFFFF"
+            android:layout_marginBottom="28dp" />
+
+        <!-- ── Paddle Shrink per Stage ────────────────────────────── -->
+        <TextView
+            android:id="@+id/labelPaddleShrink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:paddingBottom="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ステージ毎のパドル縮小量（画面幅の何%か）"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:paddingBottom="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekPaddleShrink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progressTint="#4C9EE8"
+            android:thumbTint="#FFFFFF"
+            android:layout_marginBottom="40dp" />
+
+        <!-- ── Buttons ────────────────────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="デフォルトに戻す"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#6B2020" />
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="← 戻る"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#1E2040" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+    </LinearLayout>
+</ScrollView>
