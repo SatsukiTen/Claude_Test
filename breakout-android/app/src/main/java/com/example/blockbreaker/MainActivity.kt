@@ -20,4 +20,14 @@ class MainActivity : AppCompatActivity() {
         gameView = GameView(this)
         setContentView(gameView)
     }
+
+    override fun onPause() {
+        super.onPause()
+        gameView.pause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        gameView.resume()
+    }
 }
