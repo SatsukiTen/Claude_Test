@@ -67,6 +67,7 @@ class GameView(context: Context, attrs: AttributeSet? = null) :
         screenW = width.toFloat()
         screenH = height.toFloat()
         initGame()
+        resume()
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
@@ -78,10 +79,13 @@ class GameView(context: Context, attrs: AttributeSet? = null) :
 
     fun pause() {
         isRunning = false
-        try {
-            gameThread?.join()
-        } catch (e: InterruptedException) {
-            Thread.currentThread().interrupt()
+        gameThread?.let { t ->
+            t.interrupt()
+            try {
+                t.join(2000)
+            } catch (e: InterruptedException) {
+                Thread.currentThread().interrupt()
+            }
         }
         gameThread = null
     }
@@ -147,7 +151,13 @@ class GameView(context: Context, attrs: AttributeSet? = null) :
             update()
             renderFrame()
             val sleep = msPerFrame - (System.currentTimeMillis() - t0)
-            if (sleep > 0) Thread.sleep(sleep)
+            if (sleep > 0) {
+                try {
+                    Thread.sleep(sleep)
+                } catch (e: InterruptedException) {
+                    break
+                }
+            }
         }
     }
 
