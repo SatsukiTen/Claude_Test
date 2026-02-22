@@ -16,7 +16,7 @@ class GameView(context: Context, attrs: AttributeSet? = null) :
     // ── Thread ──────────────────────────────────────────────────────────────
 
     private var gameThread: Thread? = null
-    private var isRunning = false
+    @Volatile private var isRunning = false
 
     // ── Screen ──────────────────────────────────────────────────────────────
 
