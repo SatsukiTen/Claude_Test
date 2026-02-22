@@ -60,8 +60,7 @@ class GameView(context: Context, attrs: AttributeSet? = null) :
     // ── SurfaceHolder.Callback ──────────────────────────────────────────────
 
     override fun surfaceCreated(holder: SurfaceHolder) {
-        isRunning = true
-        gameThread = Thread(this).also { it.start() }
+        resume()
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
@@ -71,8 +70,27 @@ class GameView(context: Context, attrs: AttributeSet? = null) :
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
+        // スレッドは onPause() で停止済みのはず。念のため停止を保証する。
+        pause()
+    }
+
+    // ── Lifecycle helpers (Activity から呼ぶ) ──────────────────────────────────
+
+    fun pause() {
         isRunning = false
-        gameThread?.join()
+        try {
+            gameThread?.join()
+        } catch (e: InterruptedException) {
+            Thread.currentThread().interrupt()
+        }
+        gameThread = null
+    }
+
+    fun resume() {
+        if (isRunning) return          // 多重起動防止
+        if (screenW == 0f) return      // surfaceChanged 前は開始しない
+        isRunning = true
+        gameThread = Thread(this).apply { start() }
     }
 
     // ── Game setup ──────────────────────────────────────────────────────────
